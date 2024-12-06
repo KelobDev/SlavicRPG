@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [Header("Melee")]
     public Weapon currentWeapon;
     public Transform attackPoint;
+    [HideInInspector]public Enemy enemy;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +56,8 @@ public class PlayerController : MonoBehaviour
     }
     public void attack()
     {
+        enemy.health -= currentWeapon.damage;
+        enemy = null;
         Debug.Log("Used: " + currentWeapon.name);
     }
 }
